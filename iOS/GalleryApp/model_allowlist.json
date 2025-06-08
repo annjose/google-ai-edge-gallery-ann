@@ -1,0 +1,114 @@
+{
+  "models": [
+    {
+      "name": "Gemma 3N 2B",
+      "version": "1.0",
+      "downloadFileName": "gemma_3n_2b.task",
+      "url": "https://huggingface.co/google/gemma-3n-2b/resolve/main/gemma_3n_2b.task",
+      "sizeInBytes": 1073741824,
+      "extraDataFiles": [],
+      "info": "A 2B parameter multimodal model capable of text and image understanding",
+      "learnMoreUrl": "https://ai.google.dev/gemma/docs",
+      "configs": [
+        {
+          "configKey": "MAX_TOKENS",
+          "valueType": "INT",
+          "defaultValue": 512,
+          "minValue": 1,
+          "maxValue": 2048,
+          "stepSize": 1
+        },
+        {
+          "configKey": "TEMPERATURE",
+          "valueType": "DOUBLE", 
+          "defaultValue": 0.7,
+          "minValue": 0.0,
+          "maxValue": 1.0,
+          "stepSize": 0.1
+        }
+      ],
+      "showRunAgainButton": true,
+      "showBenchmarkButton": true,
+      "isZip": false,
+      "unzipDir": "",
+      "llmPromptTemplates": [
+        {
+          "name": "Chat",
+          "template": "{input}",
+          "description": "General conversation"
+        },
+        {
+          "name": "Explain",
+          "template": "Please explain: {input}",
+          "description": "Explain concepts"
+        }
+      ],
+      "llmSupportImage": true,
+      "imported": false
+    },
+    {
+      "name": "Gemma 3N 4B",
+      "version": "1.0", 
+      "downloadFileName": "gemma_3n_4b.task",
+      "url": "https://huggingface.co/google/gemma-3n-4b/resolve/main/gemma_3n_4b.task",
+      "sizeInBytes": 2147483648,
+      "extraDataFiles": [],
+      "info": "A 4B parameter multimodal model with enhanced capabilities",
+      "learnMoreUrl": "https://ai.google.dev/gemma/docs",
+      "configs": [
+        {
+          "configKey": "MAX_TOKENS",
+          "valueType": "INT",
+          "defaultValue": 1024,
+          "minValue": 1,
+          "maxValue": 4096,
+          "stepSize": 1
+        },
+        {
+          "configKey": "TEMPERATURE",
+          "valueType": "DOUBLE",
+          "defaultValue": 0.7,
+          "minValue": 0.0,
+          "maxValue": 1.0,
+          "stepSize": 0.1
+        }
+      ],
+      "showRunAgainButton": true,
+      "showBenchmarkButton": true,
+      "isZip": false,
+      "unzipDir": "",
+      "llmPromptTemplates": [
+        {
+          "name": "Chat",
+          "template": "{input}",
+          "description": "General conversation"
+        },
+        {
+          "name": "Analyze",
+          "template": "Please analyze: {input}",
+          "description": "Detailed analysis"
+        }
+      ],
+      "llmSupportImage": true,
+      "imported": false
+    },
+    {
+      "name": "MobileNet V2",
+      "version": "1.0",
+      "downloadFileName": "mobilenet_v2.task",
+      "url": "https://storage.googleapis.com/tfhub-lite-models/tensorflow/lite-model/mobilenet_v2_1.0_224/1/default/1.tflite",
+      "sizeInBytes": 14171936,
+      "extraDataFiles": [],
+      "info": "Efficient image classification model",
+      "learnMoreUrl": "https://ai.google.dev/edge/litert/models",
+      "configs": [],
+      "showRunAgainButton": true,
+      "showBenchmarkButton": true,
+      "isZip": false,
+      "unzipDir": "",
+      "llmPromptTemplates": [],
+      "llmSupportImage": false,
+      "imported": false
+    }
+  ]
+}
