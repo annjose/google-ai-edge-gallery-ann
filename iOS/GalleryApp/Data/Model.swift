@@ -104,7 +104,9 @@ class Model: ObservableObject, Codable, Identifiable {
         extraDataFiles = try container.decodeIfPresent([ModelDataFile].self, forKey: .extraDataFiles) ?? []
         info = try container.decodeIfPresent(String.self, forKey: .info) ?? ""
         learnMoreUrl = try container.decodeIfPresent(String.self, forKey: .learnMoreUrl) ?? ""
-        configs = try container.decodeIfPresent([Config].self, forKey: .configs) ?? []
+        let anyConfigs = try container.decodeIfPresent([AnyConfig].self, forKey: .configs)
+        configs = anyConfigs?.map { $0.config } ?? []
+//        configs = try container.decodeIfPresent([AnyConfig].self, forKey: .configs) ?? []
         showRunAgainButton = try container.decodeIfPresent(Bool.self, forKey: .showRunAgainButton) ?? true
         showBenchmarkButton = try container.decodeIfPresent(Bool.self, forKey: .showBenchmarkButton) ?? true
         isZip = try container.decodeIfPresent(Bool.self, forKey: .isZip) ?? false
@@ -129,7 +131,7 @@ class Model: ObservableObject, Codable, Identifiable {
         try container.encode(extraDataFiles, forKey: .extraDataFiles)
         try container.encode(info, forKey: .info)
         try container.encode(learnMoreUrl, forKey: .learnMoreUrl)
-        try container.encode(configs, forKey: .configs)
+        try container.encode(configs.map { AnyConfig($0) }, forKey: .configs)
         try container.encode(showRunAgainButton, forKey: .showRunAgainButton)
         try container.encode(showBenchmarkButton, forKey: .showBenchmarkButton)
         try container.encode(isZip, forKey: .isZip)

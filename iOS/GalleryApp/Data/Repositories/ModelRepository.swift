@@ -126,7 +126,11 @@ class ModelRepository: ModelRepositoryProtocol, ObservableObject {
             await dataStoreRepository.saveImportedModels(allImportedModels)
         }
         
-        await fileManager.deleteModel(model.name)
+        do {
+            try await fileManager.deleteModel(model.name)
+        } catch {
+            print("Error deleting model file: \(error)")
+        }
     }
     
     func updateModelStatus(_ status: ModelStatus, for modelName: String) async {

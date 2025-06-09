@@ -132,6 +132,11 @@ extension NetworkService: URLSessionDownloadDelegate {
             handler(progress)
         }
     }
+    
+    func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
+        // This method is required by URLSessionDownloadDelegate
+        // The actual file handling is done in the completion handler of the download task
+    }
 }
 
 enum NetworkError: LocalizedError {

@@ -41,7 +41,12 @@ struct LlmChatScreen: View {
                 }
             }
             .sheet(isPresented: $viewModel.showStats) {
-                PerformanceStatsView(stats: viewModel.performanceStats)
+                if let stats = viewModel.performanceStats {
+                    PerformanceStatsView(stats: stats)
+                } else {
+                    Text("No performance stats available")
+                }
+                // PerformanceStatsView(stats: viewModel.performanceStats)
             }
             .sheet(isPresented: $viewModel.showConfig) {
                 if let model = viewModel.model {
@@ -69,7 +74,7 @@ struct LlmChatScreen: View {
                 .padding(.horizontal, 16)
                 .padding(.vertical, 8)
             }
-            .onChange(of: viewModel.messages.count) { _ in
+            .onChange(of: viewModel.messages.count) { oldCount, newCount in
                 if let lastMessage = viewModel.messages.last {
                     withAnimation(.easeOut(duration: 0.3)) {
                         proxy.scrollTo(lastMessage.id, anchor: .bottom)
@@ -81,8 +86,8 @@ struct LlmChatScreen: View {
     
     private var inputSection: some View {
         VStack(spacing: 12) {
-            if !viewModel.model?.configs.isEmpty ?? true {
-                ConfigurationPanel(model: viewModel.model)
+            if let model = viewModel.model, !model.configs.isEmpty {
+                ConfigurationPanel(model: model)
             }
             
             HStack(spacing: 12) {

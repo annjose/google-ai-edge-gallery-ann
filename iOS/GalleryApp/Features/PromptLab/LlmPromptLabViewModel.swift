@@ -1,4 +1,5 @@
 import Foundation
+import UIKit
 
 class LlmPromptLabViewModel: ObservableObject {
     @Published var inputText = ""

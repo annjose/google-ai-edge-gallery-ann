@@ -1,5 +1,6 @@
 import Foundation
 import Combine
+import UIKit
 
 protocol AppContainerProtocol {
     var dataStoreRepository: DataStoreRepositoryProtocol { get }

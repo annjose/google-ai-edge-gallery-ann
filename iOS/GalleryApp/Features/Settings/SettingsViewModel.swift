@@ -39,7 +39,7 @@ class SettingsViewModel: ObservableObject {
         
         do {
             let resourceValues = try documentsDir.resourceValues(forKeys: [.volumeAvailableCapacityKey])
-            return resourceValues.volumeAvailableCapacity ?? 0
+            return Int64(resourceValues.volumeAvailableCapacity ?? 0)
         } catch {
             return 0
         }
